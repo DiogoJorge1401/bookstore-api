@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200/**", "*","GET","POST","DELETE","PATCH","PUT"})
+@CrossOrigin(origins = {"GET","POST","DELETE","PATCH","PUT"})
 @RequestMapping("categorys")
 public class CategoryController {
   @Autowired
