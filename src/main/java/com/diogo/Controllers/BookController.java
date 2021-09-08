@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = "*")
 @RequestMapping("books")
 public class BookController {
   @Autowired
@@ -42,26 +42,30 @@ public class BookController {
   public List<BookDTO> findAll(){
     return bookService.findAll();
   }
-
+  
   @GetMapping
   public ResponseEntity<List<BookDTO>> findAllByCategory(@RequestParam(defaultValue = "0") long category_id) {
     List<BookDTO> findAllByCategoory = bookService.findAllByCategoory(category_id);
     return ResponseEntity.ok(findAllByCategoory);
   }
+  @CrossOrigin(origins = "http://localhost:4200/")
   @PatchMapping
   public ResponseEntity<Void> patchBook(@RequestBody @Valid PatchBookDTO bookDTO){
     bookService.patchBook(bookDTO);
     return new ResponseEntity<Void>(HttpStatus.OK);
   }
+  @CrossOrigin(origins = "http://localhost:4200/")
   @PutMapping
   public ResponseEntity<Void> putBook(@RequestBody @Valid PutBookDTO bookDTO){
     bookService.putBook(bookDTO);
     return new ResponseEntity<Void>(HttpStatus.OK);
   }
+  @CrossOrigin(origins = "http://localhost:4200/")
   @PostMapping
   public ResponseEntity<Livro> saveBook(@RequestBody @Valid SaveBookDTO bookDTO){
     return ResponseEntity.ok(bookService.saveBook(bookDTO));
   }
+  @CrossOrigin(origins = "http://localhost:4200/")
   @DeleteMapping("{id}")
   public ResponseEntity<Void> deleteById(@PathVariable long id){
     bookService.deleteById(id);

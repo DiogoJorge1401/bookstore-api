@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = "*")
 @RequestMapping("categorys")
 public class CategoryController {
   @Autowired
@@ -41,14 +41,17 @@ public class CategoryController {
     List<CategoryDTO> list = findAll.stream().map(e->new CategoryDTO(e)).collect(Collectors.toList());
     return ResponseEntity.ok(list);
   }
+  @CrossOrigin(origins = "http://localhost:4200/")
   @PostMapping("save")
   public ResponseEntity<Categoria> create(@RequestBody @Valid CreateCategoryDTO categoryDTO){
     return ResponseEntity.ok(categoryService.save(categoryDTO));
   }
+  @CrossOrigin(origins = "http://localhost:4200/")
   @PutMapping("update")
   public void save(@RequestBody @Valid UpdateCategoryDTO updatedCategory){
     categoryService.update(updatedCategory);
   }
+  @CrossOrigin(origins = "http://localhost:4200/")
   @DeleteMapping("delete/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id){
     categoryService.deleteById(id);
