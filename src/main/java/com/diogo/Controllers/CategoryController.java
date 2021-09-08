@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"GET","POST","DELETE","PATCH","PUT"})
+@CrossOrigin(origins = {"*","Access-Control-Allow-Origin"})
 @RequestMapping("categorys")
 public class CategoryController {
   @Autowired

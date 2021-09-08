@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"GET","POST","DELETE","PATCH","PUT"})
+@CrossOrigin(origins = {"*","Access-Control-Allow-Origin"})
 @RequestMapping("books")
 public class BookController {
   @Autowired
